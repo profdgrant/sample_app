@@ -1,0 +1,104 @@
+@import "bootstrap";
+
+/* mixins, variables, etc */
+
+$grayMediumLight: #eaeaea;
+
+/* universal */
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* use of sass nesting below */
+.center {
+  text-align: center;
+  h1 {
+  	margin-bottom: 10px;
+	}
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;  /* $grayLight is a Bootstrap-provided variable that is assigned #999 */
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+/* #logo is the div called logo: this styles the div */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white; /* this is a css built-in; contrast with grayLight, which is defined in sass */ 
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {   /* this is sass nesting - the & refers to the 'parent' #logo */
+  color: white; 
+  text-decoration: none;
+  }
+}
+
+/* footer */
+/* styling for class footer: a lot of sass nesting here */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight; /* we had to define this - see above */
+  color: $grayLight; /* sass */
+  a {
+  	color: $gray;  /* sass */
+		&:hover {
+  		color: $grayDarker; /* sass */
+  	}
+	}
+	small {
+  float: left;
+	}
+	ul {
+  	float: right;
+  	list-style: none;
+		li {
+  		float: left;
+  		margin-left: 10px;
+		}
+	}
+}
