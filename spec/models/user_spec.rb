@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:remember_token)}  # added to handle persistence across sessions
 
 
   # check that user satisfies any validation requirements
@@ -117,5 +118,13 @@ describe User do
   # NOTE : The above tests are clunky, and there are better ways to do this!! (DDG)
   # NOTE again : The "tests" are actually a mixture of test and specification, although to be honest for a method like authenticate, 
   #              the behaviour is already given
+
+  # when a new user is saved, it should have its remember token created; note that this test does not touch the database
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+    # above line is really : it {expect(@user.remember_token). not_to be-blank}
+    # or, even better for an old hack like me : not(blank(@user.remember_token))
+  end
 
 end

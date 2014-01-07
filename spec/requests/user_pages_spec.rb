@@ -39,9 +39,9 @@ describe "User pages" do
       describe "after saving the user" do
         before { click_button submit }
         let(:user) { User.find_by(email: 'user@example.com') }  # retrieve item with the just-added email, and check that name is the just-added name
-
+        it { should have_link('Sign out')} # page should have the sign-out link : CURRENTLY BROKEN - DON'T KNOW WHY!
         it { should have_title(user.name) }  # the User page for the just-added user should be displayed
-       # it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
 
 
